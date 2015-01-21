@@ -4,6 +4,7 @@ loaders to your website
 @name ClassyLoader
 @package jQuery plugin
 @author Marius Stanciu - Sergiu <marius@class.pm>
+@author Extended by Gabriel Zanetti - http://github.com/pupi1985
 @website http://www.class.pm/
-@version 1.1.0
+@version pupi1985-2.3.0
 @license MIT www.class.pm/LICENSE-MIT

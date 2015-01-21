@@ -3,11 +3,11 @@
  * www.class.pm
  *
  * Written by Marius Stanciu - Sergiu <marius@class.pm>
+ * Extended by Gabriel Zanetti - http://github.com/pupi1985
  * Licensed under the MIT license www.class.pm/LICENSE-MIT
- * Version 2.2.0
+ * Version pupi1985-2.3.0
  *
  */
-
 .classysocial {
     display: block;
     width: 72px;
@@ -40,6 +40,11 @@
     -ms-box-sizing: content-box;
     -moz-box-sizing: content-box;
     -webkit-box-sizing: content-box;
+}
+
+.classysocial .smain.default-image {
+   background-image: url(../images/share_core_square.jpg);
+   cursor: pointer;
 }
 
 .classysocial .scontainer {
