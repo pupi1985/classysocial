@@ -18,7 +18,7 @@
                         tip: 'View my Facebook page',
                         imageUrl: 'https://graph.facebook.com/{handle}/picture?type=large'
                     },
-                    google: {
+                    googleplus: {
                         url: 'https://plus.google.com/{handle}',
                         tip: 'View my Google Plus profile'
                     },
