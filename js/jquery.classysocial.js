@@ -13,26 +13,13 @@
         var ClassySocial = function(element, userOptions) {
             var defaultOptions = {
                 profiles: {
-                    facebook: {
-                        url: 'http://www.facebook.com/{handle}',
-                        tip: 'View my Facebook page',
-                        imageUrl: 'https://graph.facebook.com/{handle}/picture?type=large'
+                    blogger: {
+                        url: "http://www.blogger.com/profile/{handle}",
+                        tip: 'View my Blogger profile'
                     },
-                    googleplus: {
-                        url: 'https://plus.google.com/{handle}',
-                        tip: 'View my Google Plus profile'
-                    },
-                    twitter: {
-                        url: 'https://twitter.com/{handle}',
-                        tip: 'Check out my Twitter profile'
-                    },
-                    pinterest: {
-                        url: 'http://pinterest.com/{handle}',
-                        tip: 'View my Pinterest profile'
-                    },
-                    linkedin: {
-                        url: 'http://www.linkedin.com/profile/view?id={handle}',
-                        tip: 'View my LinkedIn profile'
+                    deviantart: {
+                        url: 'https://{handle}.deviantart.com',
+                        tip: 'Check out my DeviantArt page'
                     },
                     dribbble: {
                         url: 'http://dribbble.com/{handle}',
@@ -42,45 +29,54 @@
                         url: 'mailto:{handle}',
                         tip: 'Send me an e-mail'
                     },
-                    socl: {
-                        url: 'http://www.so.cl/#/profile/{handle}',
-                        tip: 'View my Socl profile'
-                    },
-                    instagram: {
-                        url: 'http://instagram.com/{handle}',
-                        tip: 'View my Instagram profile'
-                    },
-                    vimeo: {
-                        url: 'http://vimeo.com/{handle}',
-                        tip: 'View my Vimeo profile'
-                    },
-                    youtube: {
-                        url: 'http://www.youtube.com/user/{handle}',
-                        tip: 'Check out my Youtube profile'
-                    },
-                    github: {
-                        url: "https://www.github.com/{handle}",
-                        tip: 'View my GitHub developer profile'
-                    },
-                    blogger: {
-                        url: "http://www.blogger.com/profile/{handle}",
-                        tip: 'View my Blogger profile'
-                    },
-                    deviantart: {
-                        url: 'https://{handle}.deviantart.com',
-                        tip: 'Check out my DeviantArt page'
+                    facebook: {
+                        url: 'http://www.facebook.com/{handle}',
+                        tip: 'View my Facebook page',
+                        imageUrl: 'https://graph.facebook.com/{handle}/picture?type=large'
                     },
                     flickr: {
                         url: 'http://www.flickr.com/photos/{handle}',
                         tip: 'View my Flickr images'
                     },
+                    github: {
+                        url: "https://www.github.com/{handle}",
+                        tip: 'View my GitHub developer profile'
+                    },
+                    googleplus: {
+                        url: 'https://plus.google.com/{handle}',
+                        tip: 'View my Google Plus profile'
+                    },
+                    instagram: {
+                        url: 'http://instagram.com/{handle}',
+                        tip: 'View my Instagram profile'
+                    },
+                    linkedin: {
+                        url: 'http://www.linkedin.com/profile/view?id={handle}',
+                        tip: 'View my LinkedIn profile'
+                    },
+                    pinterest: {
+                        url: 'http://pinterest.com/{handle}',
+                        tip: 'View my Pinterest profile'
+                    },
                     skype: {
                         url: 'skype:{handle}?userinfo',
                         tip: 'Call me on Skype'
                     },
+                    socl: {
+                        url: 'http://www.so.cl/#/profile/{handle}',
+                        tip: 'View my Socl profile'
+                    },
                     steam: {
                         url: 'http://steamcommunity.com/profiles/{handle}',
                         tip: 'View my Steam profile'
+                    },
+                    twitter: {
+                        url: 'https://twitter.com/{handle}',
+                        tip: 'Check out my Twitter profile'
+                    },
+                    vimeo: {
+                        url: 'http://vimeo.com/{handle}',
+                        tip: 'View my Vimeo profile'
                     },
                     wordpress: {
                         url: 'http://{handle}.wordpress.com',
@@ -89,6 +85,10 @@
                     yahoo: {
                         url: 'http://profile.yahoo.com/y/pulse/{handle}',
                         tip: 'Check out my Yahoo profile'
+                    },
+                    youtube: {
+                        url: 'http://www.youtube.com/user/{handle}',
+                        tip: 'Check out my Youtube profile'
                     }
                 },
                 mainButton: {
