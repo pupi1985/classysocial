@@ -23,7 +23,7 @@
                     },
                     dribbble: {
                         url: 'http://dribbble.com/{handle}',
-                        tip: 'View my Dribble page'
+                        tip: 'View my Dribbble page'
                     },
                     email: {
                         url: 'mailto:{handle}',
