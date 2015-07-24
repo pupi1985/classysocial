@@ -29,7 +29,7 @@
                                     <p>ClassySocial is a <a href="http://www.jquery.com">jQuery</a> plugin written by <a href="http://www.class.pm">Marius Stanciu - Sergiu</a> and extended by <a href="http://github.com/pupi1985">Gabriel Zanetti</a>. It lets your site visitors easily see what networks you belong to and visit them in a click of a button.</p>
                                     <p>Currently supports Facebook, Google Plus, Twitter, Pinterest, LinkedIn, Dribbble, E-Mail, Socl, Instagram, Vimeo, Youtube, GitHub, Blogger, DeviantArt, Flickr, Skype, Steam, Wordpress and Yahoo out of the box. However, it is possible to define new social networks easily.</p>
                                     <p>Allow your users to see your presence on 18 of the most popular networks instantly with no need of coding knowledge! Have links to your Facebook, Twitter, Vimeo, Dribbble, Instagram, YouTube (and more!) profiles shown in a slick way, sure to impress your users.</p>
-                                    <p>Includes functionality to use your current Facebook image as the button that users press to draw out the network buttons, with automatic updating, pulled straight from Facebook! If the social network allows to link the image based on the username then it can also be pulled from any of those networks too.</p>
+                                    <p>Includes a feature to use a social network profile image as the image used to draw out the main network button, with automatic updating, pulled straight from the social network. However, no social network supports fetching a user's profile image with a raw HTTP request.</p>
                                     <p>
                                         <a href="https://github.com/pupi1985/classysocial/archive/master.zip" class="btn btn-primary">
                                             <i class="fa fa-folder-open"></i> Download it
@@ -87,8 +87,7 @@
                                                 mainButton: {
                                                     tip: 'Check my profiles out!',
                                                     image: {
-                                                        type: 'profile',
-                                                        name: 'facebook'
+                                                        type: 'default'
                                                     }
                                                 },
                                                 theme: 'slick',
@@ -128,8 +127,7 @@
                                                 mainButton: {
                                                     tip: 'Check my profiles out!',
                                                     image: {
-                                                        type: 'profile',
-                                                        name: 'facebook'
+                                                        type: 'default'
                                                     }
                                                 },
                                                 orientation: 'linedown',
@@ -275,7 +273,7 @@ $('.classysocial').ClassySocial({
                                             <span class="label label-danger">profiles.socialNetwork.tip</span> - tooltip displayed when hovering the social network image. For example, in the case of Facebook, this is the default value: <span class="label label-success">View my Facebook page</span>
                                         </li>
                                         <li>
-                                            <span class="label label-danger">profiles.socialNetwork.imageUrl</span> - the URL from which the main button image can be replaced. For example, in the case of Facebook, this is the default URL: <span class="label label-success">https://graph.facebook.com/{handle}/picture?type=large</span>. This allows to fetch the profile image of the user instead of using the main button default image. Currently, the only social network that supports this feature is Facebook but it is possible to support this feature by just adding this option to any profile object. Note this works together with main button image options explained below
+                                            <span class="label label-danger">profiles.socialNetwork.imageUrl</span> - the URL to fetch an image that will replace the main button image. For example, Facebook used to allow a raw HTTP request to fetch a user's profile image, so let's take that no longer supported feature as an example. Suppose this is the template URL to fetch a user's profile image: <span class="label label-success">https://graph.facebook.com/{handle}/picture</span>. This allows to display the profile image of the user instead of using the main button's default image. Although no social network included in this plugin supports this feature, it is still implemented. If any social network supports this in the future, then it only requires this option to be set. Note this works together with main button image options explained below
                                         </li>
                                         <li>
                                             <span class="label label-danger">mainButton</span> - it&apos;s an object that can contain any of these values: <span class="label label-success">tip</span> and <span class="label label-success">image</span>
