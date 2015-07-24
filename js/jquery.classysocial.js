@@ -31,7 +31,7 @@
                     },
                     facebook: {
                         url: 'http://www.facebook.com/{handle}',
-                        tip: 'View my Facebook page',
+                        tip: 'View my Facebook page'
                     },
                     flickr: {
                         url: 'http://www.flickr.com/photos/{handle}',
@@ -95,7 +95,7 @@
                     image: {
                         type: 'default',  // Can be 'profile' or 'default'
                         name: 'facebook'  // Only needed when type is 'profile'. Requires 'imageUrl' set in the given profile
-                    },
+                    }
                 },
                 theme: 'default',
                 orientation: 'arc',
@@ -150,6 +150,32 @@
                 return this;
             };
 
+			var _orientationDisable = function(element, e, i, s, p, d, t) {
+				$(element).addClass('disabled').delay(i).queue(function(e1) {
+					$(this).removeClass('disabled').removeClass('active');
+					e1();
+				});
+				el.find('.sbutton').each(function() {
+					$(this).stop().delay(t * s).animate({
+						left: p,
+						top: d
+					}, e);
+					s--;
+				});
+            };
+
+			var _orientationActivate = function(element, p, d, delay, n, r, e) {
+				$(element).css({
+					display: 'block',
+					left: p + 'px',
+					top: d + 'px'
+				}).stop().delay(delay).animate({
+					left: n + 'px',
+					top: r + 'px'
+				}, e);
+            };
+
+
             this.template = {
                 containerWithProfileImage:
                     '<a class="smain {theme}" title="{mainButtonTip}" alt="{mainButtonTip}">' +
@@ -166,121 +192,51 @@
                             return;
                         }
                         var e = 250, t = 250, r = el.find('.sbutton').length, i = e + (r - 1) * t, s = 0;
-                        var o = $(this).outerWidth(), l = $(this).outerHeight();
-                        var c = el.find('.sbutton:eq(0)').outerWidth(), h = el.find('.sbutton:eq(0)').outerHeight();
-                        var p = (o - c) / 2, d = (l - h) / 2;
+                        var p = ($(this).outerWidth() - el.find('.sbutton:eq(0)').outerWidth()) / 2;
+						var d = ($(this).outerHeight() - el.find('.sbutton:eq(0)').outerHeight()) / 2;
+
                         if (!$(this).hasClass('active')) {
                             $(this).addClass('disabled').delay(i).queue(function(e) {
                                 $(this).removeClass('disabled').addClass('active');
                                 e();
                             });
-                            var v = options.arcLength / r, m = options.arcStart + v / 2;
+                            var v = options.arcLength / r
+							var m = options.arcStart + v / 2;
                             el.find('.sbutton').each(function() {
-                                var n = m / 180 * Math.PI, r = p + options.arcRadius * Math.cos(n), i = d + options.arcRadius * Math.sin(n);
-                                $(this).css({
-                                    display: 'block',
-                                    left: p + 'px',
-                                    top: d + 'px'
-                                }).stop().delay(t * s).animate({
-                                    left: r + 'px',
-                                    top: i + 'px'
-                                }, e);
+                                var n = m / 180 * Math.PI;
+								var r = p + options.arcRadius * Math.cos(n);
+								var i = d + options.arcRadius * Math.sin(n);
+								_orientationActivate(this, p, d, t * s, r, i, e);
                                 m += v;
                                 s++;
                             });
                         } else {
-                            s = r - 1;
-                            $(this).addClass('disabled').delay(i).queue(function(e) {
-                                $(this).removeClass('disabled').removeClass('active');
-                                e();
-                            });
-                            el.find('.sbutton').each(function() {
-                                $(this).stop().delay(t * s).animate({
-                                    left: p,
-                                    top: d
-                                }, e);
-                                s--;
-                            });
-                        }
-                    },
-                    linedown: function() {
-                        if ($(this).hasClass('disabled')) {
-                            return;
-                        }
-                        var e = 500, t = 250, r = el.find('.sbutton').length, i = options.gap, s = e + (r - 1) * t, o = 1;
-                        var a = $(this).outerWidth(), f = $(this).outerHeight();
-                        var c = el.find('.sbutton:eq(0)').outerWidth(), h = el.find('.sbutton:eq(0)').outerHeight();
-                        var p = (a - c) / 2, d = (f - h) / 2, v = options.arcStart / 180 * Math.PI;
-                        if (!$(this).hasClass('active')) {
-                            $(this).addClass('disabled').delay(s).queue(function(e) {
-                                $(this).removeClass('disabled').addClass('active');
-                                e();
-                            });
-                            el.find('.sbutton').each(function() {
-                                var n = p + (p + i * o) * Math.cos(v), r = d + (d + i * o) * Math.sin(v);
-                                $(this).css({
-                                    display: 'block',
-                                    left: d + 'px',
-                                    top: p + 'px'
-                                }).stop().delay(t * o).animate({
-                                    left: r + 'px',
-                                    top: n + 'px'
-                                }, e);
-                                o++;
-                            });
-                        } else {
-                            o = r;
-                            $(this).addClass('disabled').delay(s).queue(function(e) {
-                                $(this).removeClass('disabled').removeClass('active');
-                                e();
-                            });
-                            el.find('.sbutton').each(function() {
-                                $(this).stop().delay(t * o).animate({
-                                    left: d,
-                                    top: p
-                                }, e);
-                                o--;
-                            });
+							_orientationDisable(this, e, i, r - 1, p, d, t);
                         }
                     },
                     line: function() {
                         if ($(this).hasClass('disabled')) {
                             return;
                         }
-                        var e = 500, t = 250, r = el.find('.sbutton').length, i = options.gap, s = e + (r - 1) * t, o = 1;
-                        var a = $(this).outerWidth(), f = $(this).outerHeight();
-                        var c = el.find('.sbutton:eq(0)').outerWidth(), h = el.find('.sbutton:eq(0)').outerHeight();
-                        var p = (a - c) / 2, d = (f - h) / 2, v = options.arcStart / 180 * Math.PI;
+                        var e = 500, t = 250, r = el.find('.sbutton').length, i = e + (r - 1) * t, s = 1;
+                        var p = ($(this).outerWidth() - el.find('.sbutton:eq(0)').outerWidth()) / 2;
+						var d = ($(this).outerHeight() - el.find('.sbutton:eq(0)').outerHeight()) / 2;
+						var v = options.arcStart / 180 * Math.PI;
+
                         if (!$(this).hasClass('active')) {
-                            $(this).addClass('disabled').delay(s).queue(function(e) {
+                            $(this).addClass('disabled').delay(i).queue(function(e) {
                                 $(this).removeClass('disabled').addClass('active');
                                 e();
                             });
                             el.find('.sbutton').each(function() {
-                                var n = p + (p + i * o) * Math.cos(v), r = d + (d + i * o) * Math.sin(v);
-                                $(this).css({
-                                    display: 'block',
-                                    left: p + 'px',
-                                    top: d + 'px'
-                                }).stop().delay(t * o).animate({
-                                    left: n + 'px',
-                                    top: r + 'px'
-                                }, e);
-                                o++;
+								var gap = options.gap * s;
+                                var n = p + (p + gap) * Math.cos(v);
+								var r = d + (d + gap) * Math.sin(v);
+								_orientationActivate(this, p, d, t * s, n, r, e);
+                                s++;
                             });
                         } else {
-                            o = r;
-                            $(this).addClass('disabled').delay(s).queue(function(e) {
-                                $(this).removeClass('disabled').removeClass('active');
-                                e();
-                            });
-                            el.find('.sbutton').each(function() {
-                                $(this).stop().delay(t * o).animate({
-                                    left: p,
-                                    top: d
-                                }, e);
-                                o--;
-                            });
+							_orientationDisable(this, e, i, r, p, d, t);
                         }
                     }
                 }
