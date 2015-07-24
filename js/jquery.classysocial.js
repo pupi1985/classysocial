@@ -32,7 +32,6 @@
                     facebook: {
                         url: 'http://www.facebook.com/{handle}',
                         tip: 'View my Facebook page',
-                        imageUrl: 'https://graph.facebook.com/{handle}/picture?type=large'
                     },
                     flickr: {
                         url: 'http://www.flickr.com/photos/{handle}',
@@ -94,7 +93,7 @@
                 mainButton: {
                     tip: 'Find me here!',
                     image: {
-                        type: 'default',  // Can be 'profile or 'default'
+                        type: 'default',  // Can be 'profile' or 'default'
                         name: 'facebook'  // Only needed when type is 'profile'. Requires 'imageUrl' set in the given profile
                     },
                 },
